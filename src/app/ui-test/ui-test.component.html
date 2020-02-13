@@ -1,39 +1,68 @@
-<div class="card-container">
-  <h2>1. Card</h2>
-  <div class="card">
-    <img class="card-img" src="../../assets/images/rufus-dog.jpg" alt="Card image cap">
-    <div class="card-body">
-      <div class="card-title">Beach Day</div>
-      <div class="card-sub-title">Rufus the dog</div>
-      <span class="card-text">Modified 02/28/19 by bfrost</span>
+<div class="ui-test-page">
+  <!-- Card -->
+  <div class="card-container">
+    <h2>1. Card</h2>
+    <div class="card">
+      <img class="card-img" src="../../assets/images/rufus-dog.jpg" alt="Card image cap">
+      <div class="card-body">
+        <div class="card-title">Beach Day</div>
+        <div class="card-sub-title">Rufus the dog</div>
+        <span class="card-text">Modified 02/28/19 by bfrost</span>
+      </div>
     </div>
   </div>
-</div>
-<div class="form-container">
-  <h2>2. Form</h2>
-  <div class="card">
-    <div class="form-field">
-      <label>Name</label>
-      <input class="input-field" type="text" name="name" placeholder="Enter Name" />
-    </div>
-    <div class="form-field">
-      <label>Email</label>
-      <input class="input-field" type="email" name="email" placeholder="Enter Email" />
-    </div>
-    <div class="form-field">
-      <label>Phone Number</label>
-      <input class="input-field" type="number" name="phoneNumber" placeholder="Enter Phone Number" />
-    </div>
-    <div class="form-field">
-      <label>Password</label>
-      <input class="input-field" type="password" name="password" placeholder="Enter Password" />
-    </div>
-    <div class="form-field">
-      <label>Confirm Password</label>
-      <input class="input-field" type="password" name="confirmPassword" placeholder="Confirm Password" />
-    </div>
-    <div class="form-field">
+
+  <!-- Form -->
+  <div class="form-container">
+    <h2>2. Form</h2>
+    <div class="card">
+      <div class="form-field">
+        <label>Name</label>
+        <input class="input-field" type="text" name="name" placeholder="Enter Name" />
+      </div>
+      <div class="form-field">
+        <label>Email</label>
+        <input class="input-field" type="email" name="email" placeholder="Enter Email" />
+      </div>
+      <div class="form-field">
+        <label>Phone Number</label>
+        <input class="input-field" type="number" name="phoneNumber" placeholder="Enter Phone Number" />
+      </div>
+      <div class="form-field">
+        <label>Password</label>
+        <input class="input-field" type="password" name="password" placeholder="Enter Password" />
+      </div>
+      <div class="form-field">
+        <label>Confirm Password</label>
+        <input class="input-field" type="password" name="confirmPassword" placeholder="Confirm Password" />
+      </div>
+      <div class="form-field">
         <button class="action-btn" type="submit">Save</button>
       </div>
+    </div>
+  </div>
+
+  <!-- Table -->
+  <div class="table-container">
+    <h2>3. Sortable Table</h2>
+    <p-table [columns]="tableHeader" [value]="tableData">
+      <ng-template pTemplate="header" let-columns>
+        <tr>
+          <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+            {{col.header}}
+            <p-sortIcon [field]="col.field" ariaLabel="Activate to sort"
+              ariaLabelDesc="Activate to sort in descending order" ariaLabelAsc="Activate to sort in ascending order">
+            </p-sortIcon>
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <tr>
+          <td *ngFor="let col of columns">
+            {{rowData[col.field]}}
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
   </div>
 </div>
